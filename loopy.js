@@ -2,14 +2,48 @@ let str = 'ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Bl
 
 // console.log(str)
 
-let newStr = "";
+let cell1 = "";
+let cell2 = "";
+let cell3 = "";
+let cell4 = "";
 
-for (let i = 0; i <= str.length; i++) {
-    while (str[i] == 'o') {
-        newStr += str[i];
+let commas = 0
+
+for (let i = 0; i < str.length; i++) {
+    let current = str[i]
+
+    if (current == ",") {
+        commas++
+    } 
+    else if (current == "\n") {
+        console.log(cell1, cell2, cell3, cell4);
+        cell1 = '';
+        cell2 = '';
+        cell3 = ''; 
+        cell4 = '';
+
+        commas = 0
     }
-    console.log(newStr);
+    else {
+        if (commas == 0){
+            cell1 += current
+        }
+        else if (commas == 1){
+            cell2 += current
+        }
+        else if (commas == 2){
+            cell3 += current
+        }
+        else{
+            cell4 += current
+        }
+    }
+
+    if(i + 1 == str.length){
+        console.log(cell1, cell2, cell3, cell4)
+    }
 }
+
 
 // for (let char = 0; char < str.length; char++){
 
